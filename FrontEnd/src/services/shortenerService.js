@@ -1,10 +1,11 @@
 import baseAPI from './api';
+//import vars from '../configs/vars';
 
 
 
 class ShortenerService{
     constructor(){
-        this.api = baseAPI('http://localhost:3001');
+        this.api = baseAPI(process.env.REACT_APP_API);
     }
 
     async getLink(code){
@@ -20,6 +21,7 @@ class ShortenerService{
     }
 
     async generate(model){
+        debugger
         const result = await this.api.post('links', model);
         return result.data;
     }
